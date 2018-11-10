@@ -1,0 +1,14 @@
+C:\Users\D\source\repos\ThirdEye\ThirdEye\bin\Debug\ThirdEye.exe.config
+C:\Users\D\source\repos\ThirdEye\ThirdEye\bin\Debug\ThirdEye.exe
+C:\Users\D\source\repos\ThirdEye\ThirdEye\bin\Debug\ThirdEye.pdb
+C:\Users\D\source\repos\ThirdEye\ThirdEye\bin\Debug\ThirdEye.xml
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.vbprojAssemblyReference.cache
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.Resources.resources
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.vbproj.GenerateResource.cache
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.vbproj.CoreCompileInputs.cache
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.exe
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.xml
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.pdb
+C:\Users\D\source\repos\ThirdEye\ThirdEye\bin\Debug\Newtonsoft.Json.dll
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.TheFace.resources
+C:\Users\D\source\repos\ThirdEye\ThirdEye\obj\Debug\ThirdEye.vbproj.CopyComplete

@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="findPerson" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2929a96301e14cbca4892c200e0b455f</Value>
+    </Setting>
+    <Setting Name="reversePhone" Type="System.String" Scope="User">
+      <Value Profile="(Default)">80c07727a56f4586b22a88a5f8dd79b0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
