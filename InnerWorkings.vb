@@ -25,7 +25,7 @@ Module InnerWorkings
         Public Property line_type As String
         Public Property carrier As String
         Public Property is_prepaid As Object
-        Public Property is_commercial As Boolean
+        Public Property is_commercial As String
         Public Property belongs_to As BelongsTo()
         Public Property current_addresses As CurrentAddress()
         Public Property historical_addresses As HistoricalAddress()
@@ -542,46 +542,56 @@ Module InnerWorkings
 
     ' Search by phone
     Public Sub SearchPhone(ByVal phonenum As String)
-        ' Check to see if they changed the values before we search
-        If phonenum <> Nothing Then
-            ' Set url and parse the Json results
-            Dim dynamicURL As String = "https://proapi.whitepages.com/3.0/phone?phone=" & phonenum & "&api_key=" & phoneKey
-            JsonParse(dynamicURL)
+        ' Wrap everything in a try statement just incase
+        Try
+            ' Check to see if they changed the values before we search
+            If phonenum <> Nothing Then
+                ' Set url and parse the Json results
+                Dim dynamicURL As String = "https://proapi.whitepages.com/3.0/phone?phone=" & phonenum & "&api_key=" & phoneKey
+                JsonParse(dynamicURL)
 
-            ' Declare our variable for the root of the Json
-            Dim infoPull As New PhoneIntel
-            ' Deserialize Json
-            infoPull = JsonConvert.DeserializeObject(Of PhoneIntel)(rawJson)
+                ' Declare our variable for the root of the Json
+                Dim infoPull As New PhoneIntel
+                ' Deserialize Json
+                infoPull = JsonConvert.DeserializeObject(Of PhoneIntel)(rawJson)
 
-            ' Logic check
-            If infoPull.is_valid = "false" Then
-                TheFace.statusTxt.Text = infoPull.warnings.ToString ' Show warning
-            Else ' Result was valid
-                TheFace.statusTxt.Text = "Info Pulled for Phone #: " & phonenum
-                TheFace.phoneName1.Text = "Name: " & infoPull.belongs_to(0).name
-                TheFace.phoneAge1.Text = "Age Range: " & infoPull.belongs_to(0).age_range
-                TheFace.phoneGender1.Text = "Gender: " & infoPull.belongs_to(0).gender
-                TheFace.phoneCity1.Text = "City: " & infoPull.current_addresses(0).city
-                TheFace.phoneAddress1.Text = infoPull.current_addresses(0).street_line_1
-                TheFace.phoneLineType.Text = "Type: " & infoPull.line_type
-                TheFace.phoneCarrier.Text = "Carrier: " & infoPull.carrier
-                ' Logic check since is_commercial is boolean
-                If infoPull.is_commercial = True Then
-                    TheFace.phoneComm.Text = "Is Commercial?: True"
+                ' Check to see if submission was valid
+                If infoPull.id IsNot Nothing Then
+                    ' Logic check
+                    If infoPull.is_valid = "false" Then
+                        TheFace.statusTxt.Text = infoPull.warnings.ToString ' Show warning
+                    Else ' Result was valid
+                        TheFace.statusTxt.Text = "Info Pulled for Phone #: " & phonenum
+                        TheFace.phoneName1.Text = "Name: " & infoPull.belongs_to(0).name
+                        TheFace.phoneAge1.Text = "Age Range: " & infoPull.belongs_to(0).age_range
+                        TheFace.phoneGender1.Text = "Gender: " & infoPull.belongs_to(0).gender
+                        TheFace.phoneCity1.Text = "City: " & infoPull.current_addresses(0).city
+                        TheFace.phoneAddress1.Text = infoPull.current_addresses(0).street_line_1
+                        TheFace.phoneLineType.Text = "Type: " & infoPull.line_type
+                        TheFace.phoneCarrier.Text = "Carrier: " & infoPull.carrier
+                        ' Logic check since is_commercial is boolean
+                        If infoPull.is_commercial = True Then
+                            TheFace.phoneComm.Text = "Is Commercial?: True"
+                        Else
+                            TheFace.phoneComm.Text = "Is Commercial?: False"
+                        End If
+                        ' Logic check and loading alternate phones
+                        If infoPull.alternate_phones.Length <> 0 Then
+                            TheFace.phonesComboBox.Clear() ' Reset the alt phones
+                            Dim cnt As Integer = infoPull.alternate_phones.Length ' Count the results
+                            For i = 0 To cnt ' Loop through the results and add them to the combo box
+                                TheFace.altPhonesCB.Items.Add(infoPull.alternate_phones(i))
+                            Next
+                        End If
+                        ' Navigate the webbrowser to show lat and long
+                        TheFace.geoLocate2.Navigate("https://www.bing.com/maps?q=" & infoPull.current_addresses(0).lat_long.latitude & "," & infoPull.current_addresses(0).lat_long.longitude)
+                    End If
                 Else
-                    TheFace.phoneComm.Text = "Is Commercial?: False"
+                    TheFace.statusTxt.Text = "Error: " & infoPull.warnings(0)
                 End If
-                ' Logic check and loading alternate phones
-                If infoPull.alternate_phones.Length <> 0 Then
-                    TheFace.phonesComboBox.Clear() ' Reset the alt phones
-                    Dim cnt As Integer = infoPull.alternate_phones.Length ' Count the results
-                    For i = 0 To cnt ' Loop through the results and add them to the combo box
-                        TheFace.altPhonesCB.Items.Add(infoPull.alternate_phones(i))
-                    Next
-                End If
-                ' Navigate the webbrowser to show lat and long
-                TheFace.geoLocate2.Navigate("https://www.bing.com/maps?q=" & infoPull.current_addresses(0).lat_long.latitude & "," & infoPull.current_addresses(0).lat_long.longitude)
             End If
-        End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 End Module
