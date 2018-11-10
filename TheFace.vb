@@ -29,7 +29,22 @@
 
     Private Sub TheFace_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' Load api keys from settings
+        statusTxt.Text = "Loading API settings..."
         findPersonTxt.Text = My.Settings.findPerson
         reversePhoneTxt.Text = My.Settings.reversePhone
+        FlatTextBox1.Text = "Identify, enhance, and update records from a single data attribute. Leverage over 30+ years of address history, 600M+ phone-to-person matches, 275M unique person-to-address matches, and more." & vbCrLf & vbCrLf & "A Find Person request allows you To identify a Single person And find details including demographics, location And phones associated With that person."
+    End Sub
+
+    Private Sub FlatButton2_Click(sender As Object, e As EventArgs) Handles FlatButton2.Click
+        ' Load API webpage
+        Process.Start("https://pro.lookup.whitepages.com/api")
+        statusTxt.Text = "Opening https://pro.lookup.whitepages.com/api in the default browser."
+    End Sub
+
+    Private Sub FlatButton1_Click_2(sender As Object, e As EventArgs) Handles FlatButton1.Click
+        ' Load API documentation
+        Process.Start("https://pro.whitepages.com/developer/documentation/api-overview/")
+        statusTxt.Text = "Opening https://pro.whitepages.com/developer/documentation/api-overview/ in the default browser."
+
     End Sub
 End Class

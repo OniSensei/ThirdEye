@@ -82,6 +82,12 @@ Partial Class TheFace
         Me.detailsNameTxt = New ThirdEye.FlatLabel()
         Me.geoLocate = New System.Windows.Forms.WebBrowser()
         Me.settingsTab = New System.Windows.Forms.TabPage()
+        Me.FlatGroupBox2 = New ThirdEye.FlatGroupBox()
+        Me.FlatTextBox2 = New ThirdEye.FlatTextBox()
+        Me.FlatGroupBox1 = New ThirdEye.FlatGroupBox()
+        Me.FlatTextBox1 = New ThirdEye.FlatTextBox()
+        Me.FlatButton2 = New ThirdEye.FlatButton()
+        Me.FlatButton1 = New ThirdEye.FlatButton()
         Me.saveSettingsBtn = New ThirdEye.FlatButton()
         Me.FlatLabel6 = New ThirdEye.FlatLabel()
         Me.reversePhoneTxt = New ThirdEye.FlatTextBox()
@@ -106,6 +112,8 @@ Partial Class TheFace
         Me.detailsTab.SuspendLayout()
         Me.detailsBox1.SuspendLayout()
         Me.settingsTab.SuspendLayout()
+        Me.FlatGroupBox2.SuspendLayout()
+        Me.FlatGroupBox1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -901,6 +909,10 @@ Partial Class TheFace
         'settingsTab
         '
         Me.settingsTab.BackColor = System.Drawing.Color.FromArgb(CType(CType(196, Byte), Integer), CType(CType(199, Byte), Integer), CType(CType(200, Byte), Integer))
+        Me.settingsTab.Controls.Add(Me.FlatGroupBox2)
+        Me.settingsTab.Controls.Add(Me.FlatGroupBox1)
+        Me.settingsTab.Controls.Add(Me.FlatButton2)
+        Me.settingsTab.Controls.Add(Me.FlatButton1)
         Me.settingsTab.Controls.Add(Me.saveSettingsBtn)
         Me.settingsTab.Controls.Add(Me.FlatLabel6)
         Me.settingsTab.Controls.Add(Me.reversePhoneTxt)
@@ -912,6 +924,92 @@ Partial Class TheFace
         Me.settingsTab.Size = New System.Drawing.Size(792, 491)
         Me.settingsTab.TabIndex = 3
         Me.settingsTab.Text = "Settings"
+        '
+        'FlatGroupBox2
+        '
+        Me.FlatGroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.FlatGroupBox2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.FlatGroupBox2.Controls.Add(Me.FlatTextBox2)
+        Me.FlatGroupBox2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.FlatGroupBox2.Location = New System.Drawing.Point(420, 89)
+        Me.FlatGroupBox2.Name = "FlatGroupBox2"
+        Me.FlatGroupBox2.ShowText = True
+        Me.FlatGroupBox2.Size = New System.Drawing.Size(238, 163)
+        Me.FlatGroupBox2.TabIndex = 11
+        Me.FlatGroupBox2.Text = "Overview"
+        '
+        'FlatTextBox2
+        '
+        Me.FlatTextBox2.BackColor = System.Drawing.Color.Transparent
+        Me.FlatTextBox2.Location = New System.Drawing.Point(12, 36)
+        Me.FlatTextBox2.MaxLength = 32767
+        Me.FlatTextBox2.Multiline = True
+        Me.FlatTextBox2.Name = "FlatTextBox2"
+        Me.FlatTextBox2.ReadOnly = True
+        Me.FlatTextBox2.Size = New System.Drawing.Size(211, 114)
+        Me.FlatTextBox2.TabIndex = 0
+        Me.FlatTextBox2.Text = "Identify, enhance, and update records from a single data attribute. Our Reverse P" &
+    "hone API allows you to find all the locations, persons, or businesses associated" &
+    " with a phone number. "
+        Me.FlatTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.FlatTextBox2.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.FlatTextBox2.UseSystemPasswordChar = False
+        '
+        'FlatGroupBox1
+        '
+        Me.FlatGroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.FlatGroupBox1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.FlatGroupBox1.Controls.Add(Me.FlatTextBox1)
+        Me.FlatGroupBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.FlatGroupBox1.Location = New System.Drawing.Point(85, 89)
+        Me.FlatGroupBox1.Name = "FlatGroupBox1"
+        Me.FlatGroupBox1.ShowText = True
+        Me.FlatGroupBox1.Size = New System.Drawing.Size(238, 299)
+        Me.FlatGroupBox1.TabIndex = 10
+        Me.FlatGroupBox1.Text = "Overview"
+        '
+        'FlatTextBox1
+        '
+        Me.FlatTextBox1.BackColor = System.Drawing.Color.Transparent
+        Me.FlatTextBox1.Location = New System.Drawing.Point(12, 36)
+        Me.FlatTextBox1.MaxLength = 32767
+        Me.FlatTextBox1.Multiline = True
+        Me.FlatTextBox1.Name = "FlatTextBox1"
+        Me.FlatTextBox1.ReadOnly = True
+        Me.FlatTextBox1.Size = New System.Drawing.Size(209, 249)
+        Me.FlatTextBox1.TabIndex = 0
+        Me.FlatTextBox1.Text = resources.GetString("FlatTextBox1.Text")
+        Me.FlatTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.FlatTextBox1.TextColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.FlatTextBox1.UseSystemPasswordChar = False
+        '
+        'FlatButton2
+        '
+        Me.FlatButton2.BackColor = System.Drawing.Color.Transparent
+        Me.FlatButton2.BaseColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.FlatButton2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.FlatButton2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.FlatButton2.Location = New System.Drawing.Point(11, 408)
+        Me.FlatButton2.Name = "FlatButton2"
+        Me.FlatButton2.Rounded = False
+        Me.FlatButton2.Size = New System.Drawing.Size(773, 32)
+        Me.FlatButton2.TabIndex = 9
+        Me.FlatButton2.Text = "API Keys"
+        Me.FlatButton2.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        '
+        'FlatButton1
+        '
+        Me.FlatButton1.BackColor = System.Drawing.Color.Transparent
+        Me.FlatButton1.BaseColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.FlatButton1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.FlatButton1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.FlatButton1.Location = New System.Drawing.Point(11, 446)
+        Me.FlatButton1.Name = "FlatButton1"
+        Me.FlatButton1.Rounded = False
+        Me.FlatButton1.Size = New System.Drawing.Size(773, 32)
+        Me.FlatButton1.TabIndex = 8
+        Me.FlatButton1.Text = "API Documentation"
+        Me.FlatButton1.TextColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         '
         'saveSettingsBtn
         '
@@ -1066,6 +1164,8 @@ Partial Class TheFace
         Me.detailsBox1.PerformLayout()
         Me.settingsTab.ResumeLayout(False)
         Me.settingsTab.PerformLayout()
+        Me.FlatGroupBox2.ResumeLayout(False)
+        Me.FlatGroupBox1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -1139,4 +1239,10 @@ Partial Class TheFace
     Friend WithEvents FlatLabel4 As FlatLabel
     Friend WithEvents findPersonTxt As FlatTextBox
     Friend WithEvents saveSettingsBtn As FlatButton
+    Friend WithEvents FlatButton2 As FlatButton
+    Friend WithEvents FlatButton1 As FlatButton
+    Friend WithEvents FlatGroupBox2 As FlatGroupBox
+    Friend WithEvents FlatTextBox2 As FlatTextBox
+    Friend WithEvents FlatGroupBox1 As FlatGroupBox
+    Friend WithEvents FlatTextBox1 As FlatTextBox
 End Class

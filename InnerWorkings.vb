@@ -253,6 +253,7 @@ Module InnerWorkings
     ' Search by name
     Public Sub SearchFor()
         ' Check to see if they changed the values before we search
+        TheFace.Text = "Checking search values..."
         If TheFace.fnTxt.Text <> "First Name" And TheFace.lnTxt.Text <> "Last Name" Then
             ' Search for values
             Dim dynamicURL As String
@@ -262,10 +263,12 @@ Module InnerWorkings
                 ' Check the city with state then run response through Json parser
                 dynamicURL = "https://proapi.whitepages.com/3.0/person?name=" & TheFace.fnTxt.Text & "+" & TheFace.lnTxt.Text & "&address.city=" & TheFace.cityTxt.Text & "&address.state_code=" & TheFace.stateTxt.Text & "&api_key=" & searchKey
                 JsonParse(dynamicURL)
+                TheFace.Text = "Json Parsed..."
 
                 ' Declare Json Root and deserialize
                 Dim infoPull As New wpJson
                 infoPull = JsonConvert.DeserializeObject(Of wpJson)(rawJson)
+                TheFace.Text = "Json Deserialized..."
 
                 ' Count the results and update the user
                 Dim personcount As String = infoPull.count_person.ToString
@@ -273,12 +276,14 @@ Module InnerWorkings
 
                 ' Set components to visible or not visible
                 VisibleSwitch(personcount)
+                TheFace.Text = "Results found..."
 
                 ' Control search variable 
                 Dim matches() As Control
 
                 Try
                     ' Logic checks and search for control to update, then update the text
+                    TheFace.Text = "Updating labels..."
                     If personcount >= 3 Then ' 3 or more results
                         For i As Integer = 0 To 2 ' index starts at 0, we pull the first 3 results
                             matches = TheFace.Controls.Find("resultName" & i, True) ' Loops controls named `resultName#` where # is variable
@@ -338,23 +343,27 @@ Module InnerWorkings
                         TheFace.resultCity0.Text = "City: " & infoPull.person(0).found_at_address.city
                     End If
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    TheFace.Text = "Error: " & ex.ToString
                 End Try
             ElseIf TheFace.Label3.Text = "City" And TheFace.stateTxt.Text <> "State" Then ' Repeat of above
                 ' Dont include city
                 dynamicURL = "https://proapi.whitepages.com/3.0/person?name=" & TheFace.fnTxt.Text & "+" & TheFace.lnTxt.Text & "&address.state_code=" & TheFace.stateTxt.Text & "&api_key=" & searchKey
                 JsonParse(dynamicURL)
+                TheFace.Text = "Json Parsed..."
 
                 Dim infoPull As New wpJson
                 infoPull = JsonConvert.DeserializeObject(Of wpJson)(rawJson)
+                TheFace.Text = "Json Deserialized..."
 
                 Dim personcount As String = infoPull.count_person.ToString
                 TheFace.statusTxt.Text = personcount & " result(s) found."
 
                 VisibleSwitch(personcount)
+                TheFace.Text = "Results found..."
 
                 Dim matches() As Control
                 Try
+                    TheFace.Text = "Updating labels..."
                     If personcount >= 3 Then
                         For i As Integer = 0 To 2
                             matches = TheFace.Controls.Find("resultName" & i, True)
@@ -414,23 +423,27 @@ Module InnerWorkings
                         TheFace.resultCity0.Text = "City: " & infoPull.person(0).found_at_address.city
                     End If
                 Catch ex As Exception
-                    MsgBox(ex.ToString)
+                    TheFace.Text = "Error: " & ex.ToString
                 End Try
             ElseIf TheFace.Label3.Text = "City" And TheFace.stateTxt.Text = "State" Then ' Repeat of above
                 ' Dont include city or state
                 dynamicURL = "https://proapi.whitepages.com/3.0/person?name=" & TheFace.fnTxt.Text & "+" & TheFace.lnTxt.Text & "&api_key=" & searchKey
                 JsonParse(dynamicURL)
+                TheFace.Text = "Json Parsed..."
 
                 Dim infoPull As New wpJson
                 infoPull = JsonConvert.DeserializeObject(Of wpJson)(rawJson)
+                TheFace.Text = "Json Deserialized..."
 
                 Dim personcount As String = infoPull.count_person.ToString
                 TheFace.statusTxt.Text = personcount & " result(s) found."
 
                 VisibleSwitch(personcount)
+                TheFace.Text = "Results found..."
 
                 Dim matches() As Control
                 Try
+                    TheFace.Text = "Updating labels..."
                     If personcount >= 3 Then
                         For i As Integer = 0 To 2
                             matches = TheFace.Controls.Find("resultName" & i, True)
@@ -490,7 +503,7 @@ Module InnerWorkings
                         TheFace.resultCity0.Text = "City: " & infoPull.person(0).found_at_address.city
                     End If
                 Catch ex As Exception
-                    MsgBox(ex.ToString) ' Catch errors
+                    TheFace.Text = "Error: " & ex.ToString
                 End Try
             End If
         Else
@@ -549,11 +562,13 @@ Module InnerWorkings
                 ' Set url and parse the Json results
                 Dim dynamicURL As String = "https://proapi.whitepages.com/3.0/phone?phone=" & phonenum & "&api_key=" & phoneKey
                 JsonParse(dynamicURL)
+                TheFace.Text = "Json Parsed..."
 
                 ' Declare our variable for the root of the Json
                 Dim infoPull As New PhoneIntel
                 ' Deserialize Json
                 infoPull = JsonConvert.DeserializeObject(Of PhoneIntel)(rawJson)
+                TheFace.Text = "Json Deserialized..."
 
                 ' Check to see if submission was valid
                 If infoPull.id IsNot Nothing Then
@@ -561,6 +576,7 @@ Module InnerWorkings
                     If infoPull.is_valid = "false" Then
                         TheFace.statusTxt.Text = infoPull.warnings.ToString ' Show warning
                     Else ' Result was valid
+                        TheFace.Text = "Valid response found..."
                         TheFace.statusTxt.Text = "Info Pulled for Phone #: " & phonenum
                         TheFace.phoneName1.Text = "Name: " & infoPull.belongs_to(0).name
                         TheFace.phoneAge1.Text = "Age Range: " & infoPull.belongs_to(0).age_range
@@ -583,6 +599,7 @@ Module InnerWorkings
                                 TheFace.altPhonesCB.Items.Add(infoPull.alternate_phones(i))
                             Next
                         End If
+                        TheFace.Text = "Finished loading..."
                         ' Navigate the webbrowser to show lat and long
                         TheFace.geoLocate2.Navigate("https://www.bing.com/maps?q=" & infoPull.current_addresses(0).lat_long.latitude & "," & infoPull.current_addresses(0).lat_long.longitude)
                     End If
@@ -591,7 +608,7 @@ Module InnerWorkings
                 End If
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            TheFace.Text = "Error: " & ex.ToString
         End Try
     End Sub
 End Module
