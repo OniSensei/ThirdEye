@@ -1,4 +1,6 @@
-﻿Public Class TheFace
+﻿Imports System.Text.RegularExpressions
+
+Public Class TheFace
 
     Private Sub FlatButton1_Click(sender As Object, e As EventArgs) Handles searchNameBtn.Click
         SearchFor()
@@ -46,5 +48,12 @@
         Process.Start("https://pro.whitepages.com/developer/documentation/api-overview/")
         statusTxt.Text = "Opening https://pro.whitepages.com/developer/documentation/api-overview/ in the default browser."
 
+    End Sub
+
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles phonesComboBox.SelectedIndexChanged
+        Dim number As String = Regex.Replace(phonesComboBox.SelectedItem.ToString, "[^0-9]", "") ' Remove all text thats not numbers
+        SearchPhone(number) ' Run reverse phone lookup for the selected number
+        FlatTabControl1.SelectedIndex = 1 ' Set the tab to `Phone Search`
+        phoneSearchTxt.Text = number
     End Sub
 End Class

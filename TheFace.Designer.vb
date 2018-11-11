@@ -77,7 +77,7 @@ Partial Class TheFace
         Me.detailsTab = New System.Windows.Forms.TabPage()
         Me.detailsAddressTxt = New ThirdEye.FlatLabel()
         Me.detailsBox1 = New ThirdEye.FlatGroupBox()
-        Me.phonesComboBox = New ThirdEye.FlatListBox()
+        Me.phonesComboBox = New System.Windows.Forms.ListBox()
         Me.detailsPhonesTxt = New ThirdEye.FlatLabel()
         Me.detailsNameTxt = New ThirdEye.FlatLabel()
         Me.geoLocate = New System.Windows.Forms.WebBrowser()
@@ -862,14 +862,15 @@ Partial Class TheFace
         '
         'phonesComboBox
         '
-        Me.phonesComboBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.phonesComboBox.items = New String() {""}
-        Me.phonesComboBox.Location = New System.Drawing.Point(241, 19)
+        Me.phonesComboBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(47, Byte), Integer))
+        Me.phonesComboBox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.phonesComboBox.ForeColor = System.Drawing.SystemColors.ScrollBar
+        Me.phonesComboBox.FormattingEnabled = True
+        Me.phonesComboBox.ItemHeight = 17
+        Me.phonesComboBox.Location = New System.Drawing.Point(274, 15)
         Me.phonesComboBox.Name = "phonesComboBox"
-        Me.phonesComboBox.SelectedColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(180, Byte), Integer))
-        Me.phonesComboBox.Size = New System.Drawing.Size(231, 43)
+        Me.phonesComboBox.Size = New System.Drawing.Size(195, 51)
         Me.phonesComboBox.TabIndex = 2
-        Me.phonesComboBox.Text = "FlatListBox1"
         Me.phonesComboBox.Visible = False
         '
         'detailsPhonesTxt
@@ -1213,7 +1214,6 @@ Partial Class TheFace
     Friend WithEvents detailsAddressTxt As FlatLabel
     Friend WithEvents detailsNameTxt As FlatLabel
     Friend WithEvents detailsPhonesTxt As FlatLabel
-    Friend WithEvents phonesComboBox As FlatListBox
     Friend WithEvents phoneTab As TabPage
     Friend WithEvents statusTxt As FlatStatusBar
     Friend WithEvents phoneSearchBtn As FlatButton
@@ -1245,4 +1245,5 @@ Partial Class TheFace
     Friend WithEvents FlatTextBox2 As FlatTextBox
     Friend WithEvents FlatGroupBox1 As FlatGroupBox
     Friend WithEvents FlatTextBox1 As FlatTextBox
+    Friend WithEvents phonesComboBox As ListBox
 End Class

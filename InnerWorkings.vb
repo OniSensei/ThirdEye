@@ -539,11 +539,11 @@ Module InnerWorkings
         TheFace.detailsAddressTxt.Text = infoPull.person(num).found_at_address.street_line_1 & " " & infoPull.person(num).found_at_address.city & ", " & infoPull.person(num).found_at_address.state_code & " " & infoPull.person(num).found_at_address.postal_code & "-" & infoPull.person(num).found_at_address.zip4
         ' Logic check
         If (Not (infoPull.person(num).phones.Length = 0)) Then
-            TheFace.phonesComboBox.Clear() ' Clear the combo box
+            TheFace.phonesComboBox.Items.Clear() ' Clear the combo box
             TheFace.detailsPhonesTxt.Text = infoPull.person(num).phones.Count & " Phone numbers found"
             ' Loop through and add the phone numbers
             For i As Integer = 0 To infoPull.person(num).phones.Count - 1
-                TheFace.phonesComboBox.AddItem(infoPull.person(num).phones(i).phone_number & " - " & infoPull.person(num).phones(i).line_type)
+                TheFace.phonesComboBox.Items.Add(infoPull.person(num).phones(i).phone_number & " - " & infoPull.person(num).phones(i).line_type)
                 TheFace.phonesComboBox.Visible = True
             Next
         Else
@@ -593,7 +593,7 @@ Module InnerWorkings
                         End If
                         ' Logic check and loading alternate phones
                         If infoPull.alternate_phones.Length <> 0 Then
-                            TheFace.phonesComboBox.Clear() ' Reset the alt phones
+                            TheFace.phonesComboBox.Items.Clear() ' Reset the alt phones
                             Dim cnt As Integer = infoPull.alternate_phones.Length ' Count the results
                             For i = 0 To cnt ' Loop through the results and add them to the combo box
                                 TheFace.altPhonesCB.Items.Add(infoPull.alternate_phones(i))
